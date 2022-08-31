@@ -1,33 +1,51 @@
 #include "main.h"
 
 
-int main(void)
+int main(int argc, char *argv[])
 {
-	int y = 60;
-	int x = 500;
-	int result, new, times, divide, remainder, expo;
+	int i;
+	int j;
+	int one, three, res;
 
-	result = do_add(y, x);
-
-	expo = do_expo(x);
-
-	times = do_mul(y, x);
-
-	new = do_sub(x, y);
-
-	divide = do_div(x, y);
-
-	remainder = do_mod(x, y);
-
-	printf("Addition: %d\n", result);
-	printf("Division: %d\n", divide);
-
-	printf("Multiplication: %d\n", times);
-	printf("Subtraction: %d\n", new);
-
-	printf("Modulous: %d\n", remainder);
-	printf("Exponential: %d\n", expo);
-
+	if (argv[1] == 0)
+	{
+		printf("Usage./test <4 + 4> or <4 - 3> or <4 x 4>\n");
+	}
+	else if((*argv[2]) == '+')
+	{
+		one = atoi(argv[1]);
+		three = atoi(argv[3]);
+		res = do_add(one, three);
+		printf("%d\n", res);
+	}
+	else if ((*argv[2]) == 'x')
+	{
+		one = atoi(argv[1]);
+		three = atoi(argv[3]);
+		res = do_mul(one, three);
+		printf("%d\n", res);
+	}
+	else if ((*argv[2]) == '/')
+	{
+		one = atoi(argv[1]);
+		three = atoi(argv[3]);
+		res = do_div(one, three);
+		printf("%d\n", res);
+	}
+	else if ((*argv[2]) == '-')
+	{
+		one = atoi(argv[1]);
+		three = atoi(argv[3]);
+		res = do_sub(one, three);
+		printf("%d\n", res);
+	}
+	else if ((*argv[2]) == '%') // this function is not giving me the desired out for modulous calc
+	{ // % symbol gets flagged by bash with error message "bash: printf: `\': invalid format character" 
+		one = atoi(argv[1]);
+		three = atoi(argv[3]);
+		res = do_mod(one, three);
+		printf("%d\n", res);
+	}
 
 	return (0);
 }
